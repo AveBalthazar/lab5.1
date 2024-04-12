@@ -38,8 +38,4 @@ public class AddIfMin extends AbstractCommand {
             toHistory();
         }
     }
-    @Override
-    public String getName() {
-        return "add_if_min";
-    }
 }

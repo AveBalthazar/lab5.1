@@ -14,7 +14,7 @@ import utility.UniversalUtility;
 public class RemoveAnyBySemesterEnum extends AbstractCommand {
     private final CollectionManager collectionManager = JavaCollectionManager.getInstance();
     public RemoveAnyBySemesterEnum() {
-        super("remove_any_by_semester_enum - удалить из коллекции один элемент, значение поля semesterEnum которого эквивалентно заданному");
+        super("remove_any_by_semester_enum semesterEnum - удалить из коллекции один элемент, значение поля semesterEnum которого эквивалентно заданному");
     }
     @Override
     public void execute(String argument) {
@@ -32,9 +32,5 @@ public class RemoveAnyBySemesterEnum extends AbstractCommand {
         } finally {
             toHistory();
         }
-    }
-    @Override
-    public String getName() {
-        return "remove_any_by_semester_enum";
     }
 }

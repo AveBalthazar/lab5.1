@@ -10,28 +10,26 @@ import utility.JavaCollectionManager;
 
 import java.util.ArrayList;
 
-/**
- * Команда, показывающая сколько элементов коллекции имеют {@link FormOfEducation} больше заданного
- */
-public class CountGreaterThanFormOfEducation extends AbstractCommand {
+public class FilterContainsName extends AbstractCommand {
     private final CollectionManager collectionManager = JavaCollectionManager.getInstance();
-    public CountGreaterThanFormOfEducation() {
-        super("count_greater_than_form_of_education formOfEducation - вывести количество элементов, значение поля formOfEducation которых больше заданного");
+    public FilterContainsName() {
+        super("filter_contains_name name - вывести элементы, значение поля name которых содержит заданную подстроку");
     }
+
     @Override
     public void execute(String argument) {
         try {
             if (argument.isEmpty()) throw new CommandNeedArgumentException();
             int count = 0;
             try {
-                FormOfEducation formOfEducation = FormOfEducation.valueOf(argument.toUpperCase());
                 ArrayList<StudyGroup> collection = collectionManager.getStudyGroupCollection();
+                System.out.println("Элементы, значение поля name которых содержит " + argument);
                 for (StudyGroup studyGroup : collection) {
-                    if (formOfEducation.ordinal() > studyGroup.getFormOfEducation().ordinal()) {
-                        count++;
+                    if (studyGroup.getName().contains(argument)) {
+                        System.out.println(studyGroup.toString());
                     }
                 }
-                System.out.println("Количество элементов с FormOfEducation больше введённого (" + formOfEducation.toString() + "): " + count);
+
             } catch (NumberFormatException e) {
                 System.out.println(e.toString());
             }

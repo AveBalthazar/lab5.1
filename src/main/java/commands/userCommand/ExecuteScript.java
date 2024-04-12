@@ -11,7 +11,7 @@ import utility.FileManager;
 public class ExecuteScript extends AbstractCommand {
     private FileManager fileManager = FileManager.getInstance();
     public ExecuteScript() {
-        super("execute_script - считать и исполнить скрипт из указанного файла.");
+        super("execute_script file_name - считать и исполнить скрипт из указанного файла.");
     }
     @Override
     public void execute(String argument) {
@@ -23,9 +23,5 @@ public class ExecuteScript extends AbstractCommand {
         } finally {
             toHistory();
         }
-    }
-    @Override
-    public String getName() {
-        return "execute_script";
     }
 }

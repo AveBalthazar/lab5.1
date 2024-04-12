@@ -15,7 +15,7 @@ public class Update extends AbstractCommand {
     private final CollectionManager collectionManager = JavaCollectionManager.getInstance();
 
     public Update() {
-        super("update - обновить значение элемента коллекции, id которого равен заданному");
+        super("update id - обновить значение элемента коллекции, id которого равен заданному");
     }
 
     @Override

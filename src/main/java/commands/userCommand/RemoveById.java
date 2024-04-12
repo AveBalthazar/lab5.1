@@ -12,7 +12,7 @@ import utility.JavaCollectionManager;
 public class RemoveById extends AbstractCommand {
     private final CollectionManager collectionManager = JavaCollectionManager.getInstance();
     public RemoveById() {
-        super("remove_by_id - удалить элемент из коллекции по его id");
+        super("remove_by_id id - удалить элемент из коллекции по его id");
     }
     @Override
     public void execute(String argument) {
@@ -30,9 +30,5 @@ public class RemoveById extends AbstractCommand {
         } finally {
             toHistory();
         }
-    }
-    @Override
-    public String getName() {
-        return "remove_by_id";
     }
 }
