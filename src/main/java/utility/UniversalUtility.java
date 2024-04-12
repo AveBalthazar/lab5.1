@@ -8,11 +8,13 @@ import java.util.Map;
 
 public class UniversalUtility {
     public static String CommandFormat(String userInput) {
-        String[] userInputList = userInput.split("_");
         String userCommand = "";
-        for (String string : userInputList) {
-            String partOfCommandName = string.substring(0, 1).toUpperCase() + string.substring(1);
-            userCommand += partOfCommandName;
+        if (userInput != "") {
+            String[] userInputList = userInput.split("_");
+            for (String string : userInputList) {
+                String partOfCommandName = string.substring(0, 1).toUpperCase() + string.substring(1);
+                userCommand += partOfCommandName;
+            }
         }
         return userCommand;
     }

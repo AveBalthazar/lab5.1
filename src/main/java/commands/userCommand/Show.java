@@ -24,7 +24,7 @@ public class Show extends AbstractCommand {
                 System.out.println(index.toString());
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
         finally {
             toHistory();

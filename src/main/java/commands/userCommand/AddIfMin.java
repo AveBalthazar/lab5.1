@@ -33,7 +33,7 @@ public class AddIfMin extends AbstractCommand {
                 System.out.println("Элемент НЕ добавлен");
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

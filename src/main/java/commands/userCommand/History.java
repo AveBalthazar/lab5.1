@@ -19,7 +19,7 @@ public class History extends AbstractCommand {
                 System.out.println(value);
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

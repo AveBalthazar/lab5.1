@@ -14,7 +14,7 @@ public class Coordinates {
                 throw new NullPointerException();
             } else this.y = y;
         } catch (NullPointerException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 

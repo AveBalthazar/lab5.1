@@ -23,10 +23,10 @@ public class RemoveById extends AbstractCommand {
                 collectionManager.getStudyGroupCollection().removeIf(route -> (route.getId() == id));
                 System.out.println("Удалён элемент по id: " + id);
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

@@ -18,10 +18,10 @@ public class Add extends AbstractCommand {
             try {
                 CreateNewElementManager.add();
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

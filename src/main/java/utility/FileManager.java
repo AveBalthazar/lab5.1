@@ -46,7 +46,7 @@ public class FileManager {
             );
             writer.writeAll(JavaCollectionManager.getStringStudyGroupCollection());
         } catch (NullEnvException | FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             writer.close();
             System.out.println("Коллекция успешно сохранена в " + System.getenv(env) + ".");
@@ -85,16 +85,16 @@ public class FileManager {
                         new Location(Long.parseLong(line[12]), Float.parseFloat(line[13]), Long.parseLong(line[14]), line[15]))));
             }
         } catch (NullEnvException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } catch (CollectionException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             try {
                 reader.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -118,12 +118,12 @@ public class FileManager {
             userScanner = new Scanner(System.in);
             ConsoleManager.setUserScanner(userScanner);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             try {
                 reader.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }

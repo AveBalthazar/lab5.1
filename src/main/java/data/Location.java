@@ -16,7 +16,7 @@ public class Location {
                 this.name = name;
             }
         } catch (NullPointerException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
     public Long askLocationToX() {

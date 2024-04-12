@@ -27,7 +27,7 @@ public class Info extends AbstractCommand {
             System.out.println("Дата сохранения: " + saveTime);
             System.out.println("Количество элементов: " + collectionManager.getStudyGroupCollection().size());
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

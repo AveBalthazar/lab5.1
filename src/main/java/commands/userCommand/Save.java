@@ -21,7 +21,7 @@ public class Save extends AbstractCommand {
             if (!argument.isEmpty()) throw new CommandNotAcceptArgumentsException();
             fileManager.saveCollection();
         } catch (CommandNotAcceptArgumentsException | IOException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

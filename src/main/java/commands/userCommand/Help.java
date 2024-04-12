@@ -25,7 +25,7 @@ public class Help extends AbstractCommand {
                 System.out.println(command.getDescription());
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         } catch (InstantiationException e) {

@@ -25,10 +25,10 @@ public class RemoveAnyBySemesterEnum extends AbstractCommand {
                 collectionManager.getStudyGroupCollection().removeIf(studyGroup -> (studyGroup.getSemester() == semester));
                 System.out.println("Удалён элемент с Semester: " + semester.toString());
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

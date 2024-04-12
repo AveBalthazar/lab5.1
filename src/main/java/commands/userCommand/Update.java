@@ -24,19 +24,22 @@ public class Update extends AbstractCommand {
             if (argument.isEmpty()) throw new CommandNeedArgumentException("Команда требует наличия аргумента. Введите update и id элемента, " +
                     "значение которого хотите обновить");
             try {
+                Boolean flag = Boolean.FALSE;
                 int id = Integer.parseInt(argument);
                 for (StudyGroup studyGroup : collectionManager.getStudyGroupCollection()) {
                     if (studyGroup.getId() == id) {
+                        flag = Boolean.TRUE;
                         CreateNewElementManager.update(studyGroup);
-                    } else {
-                        throw new IllegalArgumentException("Элемента с таким id не найдено");
                     }
                 }
+                if (Boolean.FALSE.equals(flag)) {
+                    throw new IllegalArgumentException("Элемента с таким id не найдено");
+                }
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

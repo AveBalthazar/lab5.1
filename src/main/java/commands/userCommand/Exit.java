@@ -16,7 +16,7 @@ public class Exit extends AbstractCommand {
             if (!argument.isEmpty()) throw new CommandNotAcceptArgumentsException();
             System.exit(0);
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

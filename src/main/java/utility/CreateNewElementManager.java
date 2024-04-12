@@ -101,7 +101,7 @@ public class CreateNewElementManager {
                     break;
                 } else throw new IllegalArgumentException("Введено что-то не то. Повторите попытку.");
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -121,7 +121,7 @@ public class CreateNewElementManager {
                 }
                 return userPrint;
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -156,7 +156,7 @@ public class CreateNewElementManager {
                 if (PersonName.isEmpty()) throw new IllegalArgumentException("Это значение не может быть пустым");
                 else return PersonName;
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -171,7 +171,7 @@ public class CreateNewElementManager {
             } catch (NumberFormatException e) {
                 System.out.println("Повторите попытку, значение не попадает под запрашиваемые параметры");
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -228,7 +228,7 @@ public class CreateNewElementManager {
             } catch (NumberFormatException e) {
                 System.out.println("Повторите попытку, значение не попадает под запрашиваемые параметры");
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -241,7 +241,7 @@ public class CreateNewElementManager {
                 if (userPrint.isEmpty()) throw new IllegalArgumentException("Значение passportID не должно быть пустым");
                 else return userPrint;
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }
@@ -290,7 +290,7 @@ public class CreateNewElementManager {
                     throw new IllegalArgumentException("Значение Location name не должно быть пустым");
                 } else return outputLocationName;
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }

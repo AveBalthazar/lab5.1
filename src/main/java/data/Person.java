@@ -17,7 +17,7 @@ public class Person {
             if (location == null) {throw new NullPointerException();}
             else {this.location = location;}
         } catch (IllegalArgumentException | NullPointerException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
     @Override

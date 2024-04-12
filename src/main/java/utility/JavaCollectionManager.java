@@ -64,7 +64,7 @@ public class JavaCollectionManager implements CollectionManager {
                     return freeNumberForId;
                 }
             } catch (IdOverflowException e) {
-                e.printStackTrace();
+                System.out.println(e.toString());
             }
         }
     }

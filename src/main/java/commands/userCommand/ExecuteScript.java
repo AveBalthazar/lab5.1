@@ -19,7 +19,7 @@ public class ExecuteScript extends AbstractCommand {
             if (argument.isEmpty()) throw new CommandNeedArgumentException();
             fileManager.readScript(argument);
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

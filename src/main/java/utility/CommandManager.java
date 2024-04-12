@@ -25,7 +25,7 @@ public class CommandManager {
         } catch (ClassNotFoundException | NoSuchMethodError e) {
             System.err.println("Команда не найдена!");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 }

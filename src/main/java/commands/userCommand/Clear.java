@@ -19,7 +19,7 @@ public class Clear extends AbstractCommand {
             if (!argument.isEmpty()) throw new CommandNotAcceptArgumentsException();
             collectionManager.clear();
         } catch (CommandNotAcceptArgumentsException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         } finally {
             toHistory();
         }

@@ -74,7 +74,7 @@ public class StudyGroup {
                     studyGroupList.get(5), studyGroupList.get(6), studyGroupList.get(7), studyGroupList.get(8), studyGroupList.get(9)};
             collectionManager.addStringStudyGroupCollection(str);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 
@@ -96,6 +96,10 @@ public class StudyGroup {
     public Semester getSemester() {
         return this.semesterEnum;
     }
+    public FormOfEducation getFormOfEducation() {
+        return this.formOfEducation;
+    }
+
     @Override
     public String toString() {
         return "id: " + id + ", name: " + name + ", " + coordinates.toString() +
