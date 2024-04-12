@@ -8,7 +8,7 @@ import utility.CreateNewElementManager;
 import utility.JavaCollectionManager;
 
 /**
- * Команда добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
+ * Команда, позволяющая добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
  */
 public class AddIfMax extends AbstractCommand {
     private final CollectionManager collectionManager = JavaCollectionManager.getInstance();
