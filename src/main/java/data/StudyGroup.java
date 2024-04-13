@@ -1,5 +1,6 @@
 package data;
 
+import exception.CollectionException;
 import utility.CollectionManager;
 import utility.JavaCollectionManager;
 
@@ -41,23 +42,42 @@ public class StudyGroup {
                       Long studentsCount, Integer transferredStudents, FormOfEducation formOfEducation, Semester semesterEnum, Person groupAdmin) {
         try {
             if (id.isEmpty()) this.id = collectionManager.getFreeNumberForId();
-            else if (id == null) {throw new NullPointerException();}
             else this.id = Integer.parseInt(id);
-            if (name == null || name.equals("")) throw new IllegalArgumentException("name is null");
+            if (name == null || name.isEmpty()) {
+                throw new IllegalArgumentException("name is null! check csv file!");
+            }
             else this.name = name;
-            if (coordinates == null) throw new IllegalArgumentException("coordinates is null");
+            if (coordinates == null) {
+                System.out.println("coordinates is null! check csv file!");
+                throw new CollectionException();
+            }
             else this.coordinates = coordinates;
             if (creationDate.isEmpty()) this.creationDate = collectionManager.getLastInitTime();
             else this.creationDate = LocalDateTime.parse(creationDate);
-            if (formOfEducation == null) throw new IllegalArgumentException("formOfEducation is null");
+            if (formOfEducation == null) {
+                System.out.println("formOfEducation is null! check csv file!");
+                throw new CollectionException();
+            }
             else this.formOfEducation = formOfEducation;
-            if (semesterEnum == null) throw new IllegalArgumentException("semesterEnum is null");
+            if (semesterEnum == null) {
+                System.out.println("semesterEnum is null! check csv file!");
+                throw new CollectionException();
+            }
             else this.semesterEnum = semesterEnum;
-            if (transferredStudents <= 0) throw new IllegalArgumentException("transferredStudents incorrect");
+            if (transferredStudents <= 0) {
+                System.out.println("transferredStudents incorrect! check csv file!");
+                throw new CollectionException();
+            }
             else this.transferredStudents = transferredStudents;
-            if (studentsCount <= 0 || studentsCount == null) throw new IllegalArgumentException("studentsCount incorrect");
+            if (studentsCount <= 0 || studentsCount == null) {
+                System.out.println("studentsCount incorrect! check csv file!");
+                throw new CollectionException();
+            }
             else this.studentsCount = studentsCount;
-            if (groupAdmin == null) throw new IllegalArgumentException();
+            if (groupAdmin == null) {
+                System.out.println("groupAdmin is null! check csv file!");
+                throw new CollectionException();
+            }
             else this.groupAdmin = groupAdmin;
 
             studyGroupList.add(((Integer) this.id).toString());
@@ -73,7 +93,7 @@ public class StudyGroup {
             String[] str = {studyGroupList.get(0), studyGroupList.get(1), studyGroupList.get(2), studyGroupList.get(3), studyGroupList.get(4),
                     studyGroupList.get(5), studyGroupList.get(6), studyGroupList.get(7), studyGroupList.get(8), studyGroupList.get(9)};
             collectionManager.addStringStudyGroupCollection(str);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | CollectionException e) {
             System.out.println(e.toString());
         }
     }
