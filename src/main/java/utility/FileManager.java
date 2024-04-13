@@ -4,9 +4,10 @@ import data.Coordinates;
 import data.*;
 import exception.CollectionException;
 import exception.NullEnvException;
+import exception.RecursiveExecuteException;
 
 import java.io.*;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static utility.UniversalUtility.CommandFormat;
@@ -84,8 +85,6 @@ public class FileManager {
                         UniversalUtility.findSemesterByKey(CommandFormat(line[8])), new Person(line[9], Double.parseDouble(line[10]), line[11],
                         new Location(Long.parseLong(line[12]), Float.parseFloat(line[13]), Long.parseLong(line[14]), line[15]))));
             }
-        } catch (NullEnvException e) {
-            System.out.println(e.toString());
         } catch (CollectionException e) {
             System.out.println(e.toString());
         } catch (Exception e) {
@@ -98,7 +97,22 @@ public class FileManager {
             }
         }
     }
-
+    public boolean checkScript(String filename) throws FileNotFoundException {
+        Scanner s = new Scanner(new File(filename));
+        ArrayList<String> list = new ArrayList<>();
+        while (s.hasNext()){
+            list.add(s.nextLine());
+        }
+        s.close();
+        boolean flag = Boolean.FALSE;
+        for (String str : list) {
+            if (str.toLowerCase().trim().equals("execute_script " + filename)) {
+                flag = Boolean.TRUE;
+                break;
+            }
+        }
+        return flag;
+    }
     /**
      * Выполнить скрипт из файла
      *
@@ -107,16 +121,20 @@ public class FileManager {
     public void readScript(String fileName) {
         BufferedReader reader = null;
         try {
-            File file = new File(fileName);
-            reader = new BufferedReader(new FileReader(file));
-            InputStream fileInput = new FileInputStream(file);
-            Scanner userScanner = new Scanner(fileInput);
-            ConsoleManager.setUserScanner(userScanner);
-            while ((reader.readLine()) != null) {
-                ConsoleManager.interactiveMode();
+            if (checkScript(fileName)) {
+                throw new RecursiveExecuteException();
+            } else {
+                File file = new File(fileName);
+                reader = new BufferedReader(new FileReader(file));
+                InputStream fileInput = new FileInputStream(file);
+                Scanner userScanner = new Scanner(fileInput);
+                ConsoleManager.setUserScanner(userScanner);
+                while ((reader.readLine()) != null) {
+                    ConsoleManager.interactiveMode();
+                }
+                userScanner = new Scanner(System.in);
+                ConsoleManager.setUserScanner(userScanner);
             }
-            userScanner = new Scanner(System.in);
-            ConsoleManager.setUserScanner(userScanner);
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
