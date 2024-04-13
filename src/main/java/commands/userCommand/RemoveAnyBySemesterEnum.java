@@ -6,7 +6,6 @@ import exception.CommandNeedArgumentException;
 import exception.CommandNotAcceptArgumentsException;
 import utility.CollectionManager;
 import utility.JavaCollectionManager;
-import utility.UniversalUtility;
 
 /**
  * Команда удаляет из коллекции один элемент, значение поля semesterEnum которого эквивалентно заданному

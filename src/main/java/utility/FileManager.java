@@ -91,6 +91,7 @@ public class FileManager {
             System.out.println(e.toString());
         } finally {
             try {
+                assert reader != null;
                 reader.close();
             } catch (IOException e) {
                 System.out.println(e.toString());
@@ -115,8 +116,6 @@ public class FileManager {
     }
     /**
      * Выполнить скрипт из файла
-     *
-     * @param fileName
      */
     public void readScript(String fileName) {
         BufferedReader reader = null;
@@ -139,6 +138,7 @@ public class FileManager {
             System.out.println(e.toString());
         } finally {
             try {
+                assert reader != null;
                 reader.close();
             } catch (IOException e) {
                 System.out.println(e.toString());

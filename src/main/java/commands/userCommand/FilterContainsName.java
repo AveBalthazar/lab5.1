@@ -1,7 +1,6 @@
 package commands.userCommand;
 
 import commands.AbstractCommand;
-import data.FormOfEducation;
 import data.StudyGroup;
 import exception.CommandNeedArgumentException;
 import exception.CommandNotAcceptArgumentsException;
