@@ -1,6 +1,7 @@
 package utility;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -10,16 +11,25 @@ public class ConsoleManager {
     /**
      * Пользовательский ввод с консоли (по умолчанию).
      */
-    private static Scanner userScanner = new Scanner(System.in);
+    private static Scanner userScanner = new Scanner(System.in, StandardCharsets.UTF_8);
 
     /**
      * Считывает из пользовательского ввода введенную команду.
      */
     public static void interactiveMode() throws IOException {
-        String[] userCommand = (userScanner.nextLine().toLowerCase().trim() + " ").split(" ", 2);
-        CommandManager.execute(userCommand[0], userCommand[1].trim());
+        if (userScanner.hasNext()) {
+            String[] userCommand = (userScanner.nextLine().toLowerCase().trim() + " ").split(" ", 2);
+            if (!((userCommand[0] + userCommand[1]).isEmpty())) {
+                if (userCommand[1].isEmpty()) {
+                    System.out.println("Выполнение " + userCommand[0] + " ...");
+                } else {
+                    System.out.println("Выполнение " + userCommand[0] + " с заданным аргументом...");
+                }
+                CommandManager.execute(userCommand[0], userCommand[1].trim());
+            }
+            System.out.print("-> ");
+        }
     }
-
 
     /**
      * Возвращает пользовательский ввод, очищенный от мусора.

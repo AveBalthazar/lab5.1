@@ -9,6 +9,7 @@ public class Session {
         fileManager.setEnv("lab");
         CollectionManager collectionManager = JavaCollectionManager.getInstance();
         collectionManager.loadCollection(fileManager);
+        System.out.println("Введите help для получения списка доступных команд");
         while (true) {
             ConsoleManager.interactiveMode();
         }

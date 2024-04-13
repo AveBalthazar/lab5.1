@@ -5,7 +5,7 @@ package exception;
  */
 public class CollectionException extends RuntimeException {
     public CollectionException() {
-        super("Возникла ошибка при работе с коллекцией, проверьте её целостность");
+        super("Возникла ошибка при работе с коллекцией, проверьте её целостность!");
     }
 
     public CollectionException(String message) {

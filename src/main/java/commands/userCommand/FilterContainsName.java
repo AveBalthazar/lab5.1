@@ -20,10 +20,9 @@ public class FilterContainsName extends AbstractCommand {
     public void execute(String argument) {
         try {
             if (argument.isEmpty()) throw new CommandNeedArgumentException();
-            int count = 0;
             try {
                 ArrayList<StudyGroup> collection = collectionManager.getStudyGroupCollection();
-                System.out.println("Элементы, значение поля name которых содержит " + argument);
+                System.out.println("Элементы, значение поля name которых содержит " + argument + ":");
                 for (StudyGroup studyGroup : collection) {
                     if (studyGroup.getName().contains(argument)) {
                         System.out.println(studyGroup.toString());
