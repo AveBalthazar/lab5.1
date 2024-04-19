@@ -7,16 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UniversalUtility {
-    public static String CommandFormat(String userInput) {
-        String userCommand = "";
-        if (userInput != "") {
-            String[] userInputList = userInput.split("_");
-            for (String string : userInputList) {
-                String partOfCommandName = string.substring(0, 1).toUpperCase() + string.substring(1);
-                userCommand += partOfCommandName;
-            }
-        }
-        return userCommand;
+    public static String CommandFormat(String command) {
+        return command.replaceAll("(?!^)([A-Z])", "_$1").toLowerCase();
     }
     private static final Map<String, Semester> mapSemester;
     static {

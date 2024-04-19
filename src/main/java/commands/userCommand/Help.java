@@ -4,7 +4,10 @@ import commands.AbstractCommand;
 import commands.Command;
 import exception.CommandNotAcceptArgumentsException;
 import org.reflections.Reflections;
+import utility.CommandManager;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -18,18 +21,10 @@ public class Help extends AbstractCommand {
     public void execute(String argument) {
         try {
             if (!argument.isEmpty()) throw new CommandNotAcceptArgumentsException();
-            Reflections reflections = new Reflections("commands.userCommand");
-            Set<Class<? extends AbstractCommand>> implementationClasses = reflections.getSubTypesOf(AbstractCommand.class);
-            for (Class<? extends AbstractCommand> clazz : implementationClasses) {
-                Command command = clazz.newInstance();
-                System.out.println(command.getDescription());
-            }
+            HashMap<String, AbstractCommand> commands = CommandManager.getInstance().getCommands();
+            commands.values().forEach(command -> System.out.println(command.getDescription()));
         } catch (CommandNotAcceptArgumentsException e) {
             System.out.println(e.toString());
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
         } finally {
             toHistory();
         }
